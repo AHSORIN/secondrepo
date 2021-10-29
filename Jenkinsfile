@@ -1,12 +1,24 @@
-node{
-  stage ('SCM CHECKOUT')
+pipeline
+{
+  agent any
+  
+  stages{
+    stage("SCM CHECKOUT")
          {
-           git 'https://github.com/AHSORIN/secondrepo.git'
+           steps {
+             git credentialsId:'git_credientilas', url:'https://github.com/AHSORIN/secondrepo.git'
+           }
          }
-         stage('compile-package')
+    
+         stage"build")
          {
-           sh 'mvn package'
+           steps
+           {
+             sh "mvn clean install"
+           }
+           
          }
+    
 }
          
       
