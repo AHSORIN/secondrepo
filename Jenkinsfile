@@ -10,7 +10,7 @@ pipeline
     stage("SCM CHECKOUT")
          {
            steps {
-             git credentialsId: 'git_credientials', url:'https://github.com/AHSORIN/secondrepo.git'
+            git branch: 'main', credentialsId: 'demo', url: 'https://github.com/AHSORIN/secondrepo.git'
            }
          }
     
